@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>신진우 · 유소정 혼배미사</title>
+<!-- 링크 미리보기 (Open Graph) -->
+<meta property="og:title" content="신진우 · 유소정 혼배미사">
+<meta property="og:description" content="2026. 06. 20 · 분당성요한성당">
+<meta property="og:image" content="https://sjrstc-stack.github.io/wedding/assets/img/cross.png">
+<meta property="og:url" content="https://sjrstc-stack.github.io/wedding/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="신진우 · 유소정 혼배미사">
+<meta name="twitter:description" content="2026. 06. 20 · 분당성요한성당">
+<meta name="twitter:image" content="https://sjrstc-stack.github.io/wedding/assets/img/cross.png">
 <style>
 /* 폰트 */
 @font-face{font-family:"Bookk Myungjo";font-weight:300;src:url("assets/font/BookkMyungjo_Light.woff2") format("woff2");font-display:swap;}
@@ -53,7 +63,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  padding-top:clamp(14px,4vw,22px);
+  padding-top:calc(clamp(14px,4vw,22px) + 5px);
   background:var(--bg);
   z-index:5;
 }
@@ -121,7 +131,7 @@ body{
 .item{font-weight:700;color:var(--ink-title);font-size:clamp(16px,4.8vw,20px);line-height:1.9;letter-spacing:.5px;}
 /* 통상문 본문 — 여기 안에 글을 채워 넣으세요 */
 .text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:1.95;text-align:left;margin:clamp(6px,2vw,10px) auto clamp(16px,4.5vw,22px);max-width:94%;white-space:pre-wrap;}
-.text-slot:empty::before{content:"［ 여기에 통상문을 붙여넣으세요 ］";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:6px 0;}
+.text-slot:empty::before{content:"✦✦✦";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:6px 0;letter-spacing:4px;}
 .resp{color:var(--gold);font-weight:700;}
 
 /* === 3. 하단 띠 + 인사문 (고정) === */

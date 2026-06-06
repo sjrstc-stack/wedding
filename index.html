@@ -71,9 +71,9 @@ body{
 }
 .header-inner{position:relative;width:var(--arch-w);display:flex;flex-direction:column;align-items:center;}
 .toprow{position:relative;display:flex;align-items:center;justify-content:center;width:100%;}
-.toprow .date,.toprow .place{color:#cfc6b8;font-weight:700;font-size:clamp(15px,4.6vw,22px);letter-spacing:.5px;white-space:nowrap;flex:1 1 0;}
-.toprow .date{text-align:right;padding-right:calc(clamp(34px,9vw,46px) / 2 + clamp(8px,2.5vw,16px));}
-.toprow .place{text-align:left;padding-left:calc(clamp(34px,9vw,46px) / 2 + clamp(8px,2.5vw,16px));}
+.toprow .date,.toprow .place{color:#cfc6b8;font-weight:700;font-size:clamp(13px,4.2vw,20px);letter-spacing:.5px;white-space:nowrap;flex:1 1 0;}
+.toprow .date{text-align:right;padding-right:calc(clamp(34px,9vw,46px) / 2 + clamp(14px,4vw,24px));}
+.toprow .place{text-align:left;padding-left:calc(clamp(34px,9vw,46px) / 2 + clamp(14px,4vw,24px));}
 .toprow .cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:clamp(34px,9vw,46px);z-index:1;}
 .bird,.light{position:absolute;}
 .bird{top:clamp(4px,1.5vw,10px);height:clamp(46px,13vw,64px);z-index:2;}
@@ -135,6 +135,8 @@ body{
 .text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:1.95;text-align:left;margin:clamp(6px,2vw,10px) auto clamp(16px,4.5vw,22px);max-width:94%;white-space:pre-wrap;}
 .text-slot:empty::before{content:"✦✦✦";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:6px 0;letter-spacing:4px;}
 .resp{color:var(--gold);font-weight:700;}
+.text-slot strong{display:block;text-align:center;color:var(--ink-title);font-weight:700;font-size:1.08em;letter-spacing:1px;margin:clamp(10px,3vw,16px) 0 clamp(4px,1.5vw,8px);}
+.text-slot strong:first-child{margin-top:0;}
 
 /* === 3. 하단 띠 + 인사문 (고정) === */
 .footer{flex:0 0 var(--band-h);position:relative;background:var(--bg);z-index:5;display:flex;flex-direction:column;justify-content:flex-end;}
@@ -199,10 +201,15 @@ body{
         <section class="section">
           <h2 class="sec-title">시작예식</h2>
           <img class="sec-divider" src="assets/img/line.png" alt="">
-          <div class="item">입장 및 입당성가</div>
+          <div class="item">입장</div>
           <div class="text-slot"></div>
-          <div class="item">참회예식</div>
-          <div class="text-slot">╋ 형제 여러분, 구원의 신비를 합당하게 거행하기 위하여 우리 죄를 반성합시다.
+          <div class="item">입당성가</div>
+          <div class="text-slot"></div>
+          <div class="item">인사</div>
+          <div class="text-slot"></div>
+          <div class="item">본기도</div>
+          <div class="text-slot"><strong>참회예식</strong>
+╋ 형제 여러분, 구원의 신비를 합당하게 거행하기 위하여 우리 죄를 반성합시다.
 ╋ 전능하신 하느님과
 <span class="resp">◎ 형제들에게 고백하오니
 생각과 말과 행위로 죄를 많이 지었으며
@@ -213,16 +220,17 @@ body{
 저를 위하여 하느님께 빌어 주소서.</span>
 ╋ 전능하신 하느님, 저희에게 자비를 베푸시어
 죄를 용서하시고 영원한 생명으로 이끌어 주소서.
-<span class="resp">◎ 아멘.</span></div>
-          <div class="item">자비송</div>
-          <div class="text-slot">╋ 주님, 자비를 베푸소서.
+
+<strong>자비송</strong>
+╋ 주님, 자비를 베푸소서.
 <span class="resp">◎ 주님, 자비를 베푸소서.</span>
 ╋ 그리스도님, 자비를 베푸소서.
 <span class="resp">◎ 그리스도님, 자비를 베푸소서.</span>
 ╋ 주님, 자비를 베푸소서.
-<span class="resp">◎ 주님, 자비를 베푸소서.</span></div>
-          <div class="item">대영광송</div>
-          <div class="text-slot">╋ 하늘 높은 데서는 하느님께 영광
+<span class="resp">◎ 주님, 자비를 베푸소서.</span>
+
+<strong>대영광송</strong>
+╋ 하늘 높은 데서는 하느님께 영광
 <span class="resp">○ 땅에서는 주님께서 사랑하시는 사람들에게 평화.
 ● 주 하느님, 하늘의 임금님
 ○ 전능하신 아버지 하느님
@@ -252,15 +260,17 @@ body{
 <span class="resp">◎ 하느님 감사합니다.</span></div>
           <div class="item">복음환호송</div>
           <div class="text-slot"><span class="resp">◎ 알렐루야</span></div>
-          <div class="item">강론</div>
-          <div class="text-slot">╋ 주님께서 여러분과 함께.
+          <div class="item">복음</div>
+          <div class="text-slot"><span class="resp">╋ 주님께서 여러분과 함께.
 <span class="resp">◎ 또한 사제의 영과 함께.</span>
 ╋ (        )가(이) 전한 거룩한 복음입니다.
 <span class="resp">◎ 주님, 영광 받으소서.</span>
 (복음봉독 후)
 ╋ 주님의 말씀입니다.
-<span class="resp">◎ 그리스도님 찬미합니다.</span>
-
+<span class="resp">◎ 그리스도님 찬미합니다.</span></div>
+          <div class="item">강론</div>
+          <div class="text-slot">
+<신앙고백>
 ╋ 전능하신 천주 성부
 <span class="resp">◎ 천지의 창조주를 저는 믿나이다.
 그 외아들 우리 주 예수 그리스도님

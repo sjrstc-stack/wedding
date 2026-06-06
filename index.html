@@ -14,14 +14,14 @@
   --gold:#b08d57;
   --ink:#6b5a45;
   --ink-title:#4a4038;
-  --bg:#fbf9f5;
+  --bg:#FBF9F5;
 
   --arch-w:min(92vw, 460px);                  /* 아치(본문) 가로폭 */
   --arch-top-h:calc(var(--arch-w) * 0.5145);  /* 아치 곡선 높이(이미지 비율) */
   --arch-bot-h:calc(var(--arch-w) * 0.2218);  /* 아치 하단(기둥끝+마름모) 높이 */
 
   --header-h:clamp(132px, 30vw, 168px);  /* 상단 고정 높이 */
-  --band-h:clamp(56px, 14vw, 74px);      /* 하단 띠+인사문 고정 높이 */
+  --band-h:clamp(72px, 18vw, 96px);      /* 하단 띠+인사문+양끝장식 고정 높이 */
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -77,23 +77,27 @@ body{
 
 /* === 2. 가운데: 아치 배경(고정) + 본문(스크롤) 두 층 겹침 === */
 .middle{flex:1 1 auto;min-height:0;position:relative;overflow:hidden;}
+/* 곡선 구간 페이드: 글자가 곡선 영역에 닿으면 배경색에 가려 사라짐 */
+.fade-curve{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:calc(var(--arch-top-h) * 0.92);
+  z-index:3;
+  pointer-events:none;
+  background:linear-gradient(
+    to bottom,
+    var(--bg) 0%,
+    var(--bg) 42%,
+    rgba(251,249,245,0) 100%
+  );
+}
 
 /* (2-a) 아치 배경 — 고정, 절대 안 움직임 */
-.arch-bg{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:var(--arch-w);pointer-events:none;z-index:1;}
+.arch-bg{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:var(--arch-w);pointer-events:none;z-index:4;}
 .arch-bg .a-top{position:absolute;top:0;left:0;width:100%;height:var(--arch-top-h);display:block;}
 .arch-bg .a-mid{position:absolute;left:0;width:100%;top:calc(var(--arch-top-h) - 2px);bottom:calc(var(--arch-bot-h) - 2px);background-image:url("assets/img/arch-middle.png");background-repeat:repeat-y;background-position:center top;background-size:100% auto;}
 .arch-bg .a-bot{position:absolute;bottom:0;left:0;width:100%;height:var(--arch-bot-h);display:block;}
-.arch-bg .cup{position:absolute;left:clamp(-14px,-3.5vw,-6px);bottom:0;height:clamp(52px,14vw,72px);width:auto;}
-/* cup 위에 Shape(반짝이) — cup 높이의 0.2907배가 cup 너비. 그 중심에 맞춤 */
-.arch-bg .cup-shape{
-  position:absolute;
-  left:clamp(-14px,-3.5vw,-6px);
-  bottom:calc(clamp(52px,14vw,72px) + 2px);   /* cup 높이 + 2px */
-  width:calc(clamp(52px,14vw,72px) * 0.2907);  /* = cup 너비 */
-  height:auto;
-  transform:scale(1.6);                        /* cup보다 살짝 넓게 */
-  transform-origin:bottom center;
-}
+
 
 /* (2-b) 본문 — 스크롤 */
 .scrollarea{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;z-index:2;}
@@ -121,7 +125,20 @@ body{
 /* === 3. 하단 띠 + 인사문 (고정) === */
 .footer{flex:0 0 var(--band-h);position:relative;background:var(--bg);z-index:5;display:flex;flex-direction:column;justify-content:flex-end;}
 .footer .band-img{display:block;width:100%;height:auto;}
-.footer .msg{text-align:center;color:#a99a82;font-weight:300;font-size:clamp(10.5px,3vw,13px);padding:6px 12px 8px;line-height:1.5;}
+/* 인사문 + 양 끝 장식 (왼쪽 cross2, 오른쪽 cup) */
+.footer .msg-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:clamp(6px,2vw,12px);
+  padding:4px clamp(8px,3vw,18px) 6px;
+}
+.footer .foot-deco{
+  flex:0 0 auto;
+  height:clamp(40px,11vw,58px);
+  width:auto;
+}
+.footer .msg{flex:1 1 auto;text-align:center;color:#a99a82;font-weight:300;font-size:clamp(10.5px,3vw,13px);line-height:1.5;}
 </style>
 </head>
 <body>
@@ -157,8 +174,6 @@ body{
       <img class="a-top" src="assets/img/arch-top.png" alt="">
       <div class="a-mid"></div>
       <img class="a-bot" src="assets/img/arch-bottom.png" alt="">
-      <img class="cup"   src="assets/img/cup.png" alt="">
-      <img class="cup-shape" src="assets/img/Shape.png" alt="">
     </div>
 
     <!-- (2-b) 본문 — 스크롤 -->
@@ -250,12 +265,19 @@ body{
       </div>
     </div>
 
+    <!-- 곡선 구간 페이드 가림막 (글자가 곡선에 닿으면 사라지게) -->
+    <div class="fade-curve"></div>
+
   </div>
 
   <!-- ===== 3. 하단 띠 + 인사문 (고정) ===== -->
   <footer class="footer">
     <img class="band-img" src="assets/img/bottom.png" alt="">
-    <div class="msg">저희의 결혼을 축하하러 와 주셔서 감사드립니다. 사랑과 평화가 항상 여러분과 함께하기를 기도드립니다.</div>
+    <div class="msg-row">
+      <img class="foot-deco left"  src="assets/img/cross2.png" alt="">
+      <div class="msg">저희의 결혼을 축하하러 와 주셔서 감사드립니다.<br>사랑과 평화가 항상 여러분과 함께하기를 기도드립니다.</div>
+      <img class="foot-deco right" src="assets/img/cup.png" alt="">
+    </div>
   </footer>
 
 </div>

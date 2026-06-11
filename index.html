@@ -134,6 +134,9 @@ body{
 /* 통상문 본문 — 여기 안에 글을 채워 넣으세요 */
 .text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:1.95;text-align:left;margin:clamp(6px,2vw,10px) auto clamp(16px,4.5vw,22px);max-width:94%;white-space:pre-wrap;}
 .text-slot:empty::before{content:"✦✦✦";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:6px 0;letter-spacing:4px;}
+/* 마지막 본문 칸 아래 빈 공간 줄이기 */
+.section:last-child .text-slot:last-child{margin-bottom:0;}
+.section:last-child .text-slot:last-child:empty::before{padding-bottom:0;}
 .resp{color:var(--gold);font-weight:700;}
 .text-slot strong{display:block;text-align:left;color:#757575;font-weight:700;font-size:1.08em;letter-spacing:1px;margin:clamp(4px,1.5vw,2px) 0 0px;}
 .text-slot strong:first-child{margin-top:0;}

@@ -25,6 +25,8 @@
 :root{
   --gold:#c2a180;
   --gap:clamp(18px,5vw,26px);
+  --tracking:-0.02em;   /* 본문 글자 간격(자간) — 이 값만 바꾸면 전체 본문에 적용됩니다 */
+  --leading:2.2;       /* 본문 줄 간격(행간) — 이 값만 바꾸면 전체 본문에 적용됩니다 */
   --ink:#6b5a45;
   --ink-title:#6c6e71;
   --bg:#fafafa;
@@ -134,7 +136,7 @@ body{
 .item{font-weight:700;color:var(--ink-title);font-size:clamp(16px,4.8vw,20px);line-height:1.9;letter-spacing:.5px;margin-top:var(--gap);}
 .item:first-of-type{margin-top:0;}
 /* 통상문 본문 — 여기 안에 글을 채워 넣으세요 */
-.text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:1.95;text-align:left;margin:var(--gap) auto 0;max-width:94%;white-space:pre-wrap;}
+.text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:var(--leading);letter-spacing:var(--tracking);text-align:left;margin:var(--gap) auto 0;max-width:94%;white-space:pre-wrap;}
 .text-slot:empty::before{content:"✦✦✦";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:clamp(4px,1.2vw,6px) 0 0;letter-spacing:4px;}
 .resp{color:var(--gold);font-weight:700;}
 .text-slot .vnum{font-size:.72em;color:#bbb3a6;font-weight:400;vertical-align:0.15em;margin-right:1px;}
@@ -208,7 +210,8 @@ body{
 
         <!-- ▼▼▼ 여기부터 본문. 각 text-slot 안에 통상문을 넣으세요 ▼▼▼ -->
 
-        <div class="guide"><span class="g-title">안내사항</span><span class="g-legend">╋ 사제가 혼자 말하는 부분입니다.<br><span class="resp">◎ 교우들이 다 함께 말하는 부분입니다.</span></span><span class="g-note">본 안내문은 천주교 예식이 익숙하지 않은 분들을 위해 제작한 비공식 자료입니다. 당일 진행에 따라 일부 변동될 수 있습니다.</span></div>
+        <div class="guide"><span class="g-title">안내사항</span><span class="g-legend">╋ 사제가 혼자 말하는 부분입니다.<br><span class="resp">◎ 교우들이 다 함께 말하는 부분입니다.</span></span><span class="g-note">본 안내문은 천주교 예식이 익숙하지 않은 분들을 위해 제작한 비공식 자료입니다. 당일 진행에 따라 일부 변동될 수 있습니다.</span>
+<span class="g-note">♰</span></div>
 
         <section class="section">
           <h2 class="sec-title">시작예식</h2>
@@ -268,13 +271,13 @@ body{
           <div class="item">반지의 축복과 교환</div>
           <div class="text-slot"></div>
           <div class="item">보편지향기도</div>
-          <div class="text-slot">1. 오늘 혼인으로 거룩하게 맺어진, 신랑 바르톨로메오와 신부 루스티카가 언제나 몸과 마음의 건강을 누리게 하소서.
+          <div class="text-slot"><span class="vnum">1</span> 오늘 혼인으로 거룩하게 맺어진, 신랑 바르톨로메오와 신부 루스티카가 언제나 몸과 마음의 건강을 누리게 하소서.
 <span class="resp">◎ 주님 저희의 기도를 들어주소서.</span>
-2. 갈릴래아 가나의 혼인을 거룩하게 하신 주님, 이들의 혼인도 강복하소서.
+<span class="vnum">2</span> 갈릴래아 가나의 혼인을 거룩하게 하신 주님, 이들의 혼인도 강복하소서.
 <span class="resp">◎ 주님 저희의 기도를 들어주소서.</span>
-3. 이 신혼부부에게 온전한 사랑과 평화를 내리시어, 덕망 있는 그리스도인이 되게 하소서.
+<span class="vnum">3</span> 이 신혼부부에게 온전한 사랑과 평화를 내리시어, 덕망 있는 그리스도인이 되게 하소서.
 <span class="resp">◎ 주님 저희의 기도를 들어주소서.</span>
-4. 성령께서는 모든 부부에게 혼인성사의 은혜를 새로이 내려주소서.
+<span class="vnum">4</span> 성령께서는 모든 부부에게 혼인성사의 은혜를 새로이 내려주소서.
 <span class="resp">◎ 주님 저희의 기도를 들어주소서.</span></div>
         </section>
 

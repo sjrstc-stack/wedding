@@ -24,6 +24,7 @@
 /* === 설정값: 여기 숫자만 바꾸면 크기/색/간격 조정 === */
 :root{
   --gold:#c2a180;
+  --gap:clamp(18px,5vw,26px);
   --ink:#6b5a45;
   --ink-title:#6c6e71;
   --bg:#fafafa;
@@ -129,11 +130,12 @@ body{
 .section{margin-bottom:clamp(30px,8vw,46px);}
 .section:last-child{margin-bottom:0;}
 .sec-title{font-weight:700;color:var(--ink-title);font-size:clamp(21px,6.4vw,30px);letter-spacing:2px;}
-.sec-divider{display:block;margin:clamp(8px,2.4vw,14px) auto clamp(12px,3.4vw,18px);width:clamp(150px,62%,300px);height:auto;}
-.item{font-weight:700;color:var(--ink-title);font-size:clamp(16px,4.8vw,20px);line-height:1.9;letter-spacing:.5px;}
+.sec-divider{display:block;margin:var(--gap) auto var(--gap);width:clamp(150px,62%,300px);height:auto;}
+.item{font-weight:700;color:var(--ink-title);font-size:clamp(16px,4.8vw,20px);line-height:1.9;letter-spacing:.5px;margin-top:var(--gap);}
+.item:first-of-type{margin-top:0;}
 /* 통상문 본문 — 여기 안에 글을 채워 넣으세요 */
-.text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:1.95;text-align:left;margin:clamp(6px,2vw,10px) auto clamp(16px,4.5vw,22px);max-width:94%;white-space:pre-wrap;}
-.text-slot:empty::before{content:"✦✦✦";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:6px 0;letter-spacing:4px;}
+.text-slot{font-weight:300;color:var(--ink);font-size:clamp(13.5px,4.1vw,16px);line-height:1.95;text-align:left;margin:var(--gap) auto 0;max-width:94%;white-space:pre-wrap;}
+.text-slot:empty::before{content:"✦✦✦";color:#c9bfae;display:block;text-align:center;font-size:.85em;padding:clamp(4px,1.2vw,6px) 0 0;letter-spacing:4px;}
 .resp{color:var(--gold);font-weight:700;}
 .text-slot .vnum{font-size:.72em;color:#bbb3a6;font-weight:400;vertical-align:0.15em;margin-right:1px;}
 .text-slot .bref{font-size:.95em;color:#bbb3a6;font-weight:400;letter-spacing:.5px;}
